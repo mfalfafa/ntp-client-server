@@ -1,4 +1,4 @@
-Using NTP Client Server to sync time of all devices in the local network__
+Using NTP Client Server to sync time of all devices in the local network<br/>
 @ Setting up NTP Server
 1. uninstall ntpdate in the server if there is ntpdate installed
 2. install NTP
