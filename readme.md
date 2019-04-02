@@ -6,7 +6,7 @@ sudo apt-get install ntp
 2. edit ntp config file
 sudo nano /etc/ntp.conf
 3. add the following code to the ntp config file. Change or add the servers that you want to connect and don't forget to select the region of server that is near with you so the time is correct.
-# /etc/ntp.conf, configuration for ntpd; see ntp.conf(5) for help
+```# /etc/ntp.conf, configuration for ntpd; see ntp.conf(5) for help
 
 driftfile /var/lib/ntp/ntp.drift
 
@@ -92,6 +92,7 @@ restrict source notrap nomodify noquery
 restrict  10.129.15.0 mask 255.255.0.0 nomodify notrap
 restrict 127.0.0.1
 #broadcast 10.129.15.255
+```
 
 4. restart NTP service 
 sudo /etc/init.d/ntp restart
@@ -108,6 +109,7 @@ sudo apt-get install ntp
 3. edit NTP config file
 sudo nano /etc/ntp.conf
 4. add the following code and select the local ntp server in your local network
+```
 # /etc/ntp.conf, configuration for ntpd; see ntp.conf(5) for help
 
 driftfile /var/lib/ntp/ntp.drift
@@ -172,6 +174,7 @@ restrict source notrap nomodify noquery
 
 restrict 10.129.15.24
 restrict 127.0.0.1
+```
 
 5. restart NTP service
 sudo /etc/init.d/ntp restart
