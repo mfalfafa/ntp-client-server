@@ -1,10 +1,14 @@
 Using NTP Client Server to sync time of all devices in the local network<br/>
-@ Setting up NTP Server
+### @ Setting up NTP Server ###
 1. uninstall ntpdate in the server if there is ntpdate installed
 2. install NTP
+```
 sudo apt-get install ntp
+```
 2. edit ntp config file
+```
 sudo nano /etc/ntp.conf
+```
 3. add the following code to the ntp config file. Change or add the servers that you want to connect and don't forget to select the region of server that is near with you so the time is correct.
 ```# /etc/ntp.conf, configuration for ntpd; see ntp.conf(5) for help
 
@@ -95,19 +99,27 @@ restrict 127.0.0.1
 ```
 
 4. restart NTP service 
+```
 sudo /etc/init.d/ntp restart
-
+```
 5. sync date/time in server using ntp
+```
 sudo ntpq -np
+```
 
-
-@ Setting up NTP Client
+### @ Setting up NTP Client ###
 1. Uninstall ntpdate in client
+```
 sudo apt-get remove ntpdate
+```
 2. Install NTP
+```
 sudo apt-get install ntp
+```
 3. edit NTP config file
+```
 sudo nano /etc/ntp.conf
+```
 4. add the following code and select the local ntp server in your local network
 ```
 # /etc/ntp.conf, configuration for ntpd; see ntp.conf(5) for help
@@ -177,19 +189,24 @@ restrict 127.0.0.1
 ```
 
 5. restart NTP service
+```
 sudo /etc/init.d/ntp restart
+```
 
-@ to update date/time in client using ntp or sync date/time from local PC server
+### @ to update date/time in client using ntp or sync date/time from local PC server ###
 1. sudo service ntp stop
 2. sudo ntpd -gq
 3. sudo service ntp start
 
-@ Schedule sync date/time in client to server everyday at midnight
+### @ Schedule sync date/time in client to server everyday at midnight ###
+
 1. make bash file .sh and add the script below to sync date/time and save to /home/pi/date_time.sh
+```
 #!/bin/sh
 sudo service ntp stop
 sudo ntpd -gq
 sudo service ntp start
+```
 2. open crontab and add the following schedule to schedule bash script to run every booting and everyday at midnight
 ```
 sudo crontab -e
@@ -197,5 +214,7 @@ sudo crontab -e
 - 0 0 * * * sudo bash /home/pi/date_time.sh
 ```
 3. Check crontab list
+```
 sudo crontab -l
+```
 4. Date/time on client should be always synchronous with date/time in PC Server. Enjoy it.
