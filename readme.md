@@ -183,3 +183,19 @@ sudo /etc/init.d/ntp restart
 1. sudo service ntp stop
 2. sudo ntpd -gq
 3. sudo service ntp start
+
+@ Schedule sync date/time in client to server everyday at midnight
+1. make bash file .sh and add the script below to sync date/time and save to /home/pi/date_time.sh
+#!/bin/sh
+sudo service ntp stop
+sudo ntpd -gq
+sudo service ntp start
+2. open crontab and add the following schedule to schedule bash script to run every booting and everyday at midnight
+```
+sudo crontab -e
+- @reboot sudo bash /home/pi/date_time.sh
+- 0 0 * * * sudo bash /home/pi/date_time.sh
+```
+3. Check crontab list
+sudo crontab -l
+4. Date/time on client should be always synchronous with date/time in PC Server. Enjoy it.
